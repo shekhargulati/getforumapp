@@ -5,12 +5,12 @@
     
         
     ForumApp.Message = Backbone.RelationalModel.extend({
-        urlRoot: '/forumapp/api/messages',
+        urlRoot: '/api/messages',
         idAttribute: 'id',
     });
 
     ForumApp.Thread = Backbone.RelationalModel.extend({
-        urlRoot: '/forumapp/api/threads',
+        urlRoot: '/api/threads',
         idAttribute: 'id',
         relations: [{
             type: Backbone.HasMany,
@@ -24,7 +24,7 @@
     });
     
     ForumApp.ThreadCollection = Backbone.Collection.extend({
-        url: '/forumapp/api/threads',
+        url: '/api/threads',
         model: ForumApp.Thread,
     });
     
