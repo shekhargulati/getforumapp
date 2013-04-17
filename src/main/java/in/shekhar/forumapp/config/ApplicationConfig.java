@@ -1,11 +1,13 @@
 package in.shekhar.forumapp.config;
 
 import in.shekhar.forumapp.domain.Thread;
+import in.shekhar.forumapp.repository.ThreadRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -13,6 +15,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @ComponentScan(basePackages = "in.shekhar.forumapp")
 @Configuration
+@EnableJpaRepositories(basePackageClasses = ThreadRepository.class)
 public class ApplicationConfig {
 
 	@Autowired
