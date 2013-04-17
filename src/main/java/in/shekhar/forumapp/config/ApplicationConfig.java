@@ -12,10 +12,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 
 @ComponentScan(basePackages = "in.shekhar.forumapp")
 @Configuration
 @EnableJpaRepositories(basePackageClasses = ThreadRepository.class)
+@EnableWebMvc
 public class ApplicationConfig {
 
 	@Autowired
@@ -44,5 +47,12 @@ public class ApplicationConfig {
 		txManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return txManager;
 	}
-	
+
+	@Bean
+	public MappingJacksonJsonView jsonView() {
+		MappingJacksonJsonView jsonView = new MappingJacksonJsonView();
+		jsonView.setPrefixJson(true);
+		return jsonView;
+	}
+
 }
